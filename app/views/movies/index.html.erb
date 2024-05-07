@@ -1,0 +1,22 @@
+<h1>All Movies</h1>
+
+<%= form_with(url: movies_path, method: "get", local: true) do %>
+  <%= text_field_tag :actor, params[:actor], placeholder: "Search by actor" %>
+  <%= submit_tag "Search" %>
+<% end %>
+
+<ul>
+  <% @movies.each do |movie| %>
+    <li>
+      <strong>Title:</strong> <%= movie.title %><br>
+      <strong>Description:</strong> <%= movie.description %><br>
+      <strong>Year:</strong> <%= movie.year %><br>
+      <strong>Director:</strong> <%= movie.director %><br>
+      <strong>Actor(s):</strong> <%= movie.actor_names %><br>
+      <strong>Filming Location:</strong> <%= movie.filming_location %><br>
+      <strong>Country:</strong> <%= movie.country %><br>
+      <strong>Reviews Count:</strong> <%= movie.reviews_count %><br>
+      <strong>Average Rating:</strong> <%= movie.average_rating&.round(2) || 'N/A' %><br>
+    </li>
+  <% end %>
+</ul>
