@@ -1,22 +1,73 @@
-<h1>All Movies</h1>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>All Movies</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+    }
+    .container {
+      max-width: 800px;
+      margin: 20px auto;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 5px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    h1 {
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+    .movies {
+      list-style: none;
+      padding: 0;
+    }
+    .movie {
+      background-color: #f9f9f9;
+      border-radius: 5px;
+      padding: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    .movie h2 {
+      margin-top: 0;
+      font-size: 20px;
+    }
+    .movie p {
+      margin: 0;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
 
-<%= form_with(url: movies_path, method: "get", local: true) do %>
-  <%= text_field_tag :actor, params[:actor], placeholder: "Search by actor" %>
-  <%= submit_tag "Search" %>
-<% end %>
+<div class="container">
+  <h1>All Movies</h1>
 
-<ul>
-  <% @movies.each do |movie| %>
-    <li>
-      <strong>Title:</strong> <%= movie.title %><br>
-      <strong>Description:</strong> <%= movie.description %><br>
-      <strong>Year:</strong> <%= movie.year %><br>
-      <strong>Director:</strong> <%= movie.director %><br>
-      <strong>Actor(s):</strong> <%= movie.actor_names %><br>
-      <strong>Filming Location:</strong> <%= movie.filming_location %><br>
-      <strong>Country:</strong> <%= movie.country %><br>
-      <strong>Reviews Count:</strong> <%= movie.reviews_count %><br>
-      <strong>Average Rating:</strong> <%= movie.average_rating&.round(2) || 'N/A' %><br>
-    </li>
+  <%= form_with(url: movies_path, method: "get", local: true) do %>
+    <%= text_field_tag :actor, params[:actor], placeholder: "Search by actor" %>
+    <%= submit_tag "Search" %>
   <% end %>
-</ul>
+
+  <ul class="movies">
+    <% @movies.each do |movie| %>
+      <li class="movie">
+        <h2><%= movie.title %></h2>
+        <p><strong>Description:</strong> <%= movie.description %></p>
+        <p><strong>Year:</strong> <%= movie.year %></p>
+        <p><strong>Director:</strong> <%= movie.director %></p>
+        <p><strong>Actor(s):</strong> <%= movie.actor_names %></p>
+        <p><strong>Filming Location:</strong> <%= movie.filming_location %></p>
+        <p><strong>Country:</strong> <%= movie.country %></p>
+        <p><strong>Reviews Count:</strong> <%= movie.reviews_count %></p>
+        <p><strong>Average Rating:</strong> <%= movie.average_rating&.round(2) || 'N/A' %></p>
+      </li>
+    <% end %>
+  </ul>
+</div>
+
+</body>
+</html>
