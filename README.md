@@ -1,5 +1,8 @@
 # Movies ( take-home assignment )
+<img width="1103" alt="Screenshot 2024-05-07 at 5 42 01 PM" src="https://github.com/KhalidObaide/rails-assignment/assets/46670360/1166dd80-c980-44c5-b1dd-01c1af31f3ad">
 
+
+### Setup && Usage:
 * to setup & run the **import-task**
 ```bash
 bin/rails db:migrate
